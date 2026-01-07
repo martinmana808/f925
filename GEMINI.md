@@ -12,6 +12,10 @@ A premium landing page and showcase for "AI That Works in the Real World". Built
 
 ## History
 
+### [2026-01-07] OG Image Refinement (v2) | [log-20260107-og-refinement-v2](./GEMINI--logs.md#log-20260107-og-refinement-v2)
+- Updated OG image text to "What do you want to do?".
+- Enforced 1200x630 dimensions.
+
 ### [2026-01-07] OG Image Branding | [log-20260107-og-update](./GEMINI--logs.md#log-20260107-og-update)
 - Updated Open Graph image with "F925 | Ai solutions." branding.
 - Executed full project git sync.
