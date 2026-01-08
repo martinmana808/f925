@@ -12,6 +12,10 @@ A premium landing page and showcase for "AI That Works in the Real World". Built
 
 ## History
 
+### [2026-01-08] Branding: Logo Added | [log-20260108-branding-logo](./GEMINI--logs.md#log-20260108-branding-logo)
+- Added F925 SVG logo to main layout.
+- Manual consistency refresh of core components and implementation files.
+
 ### [2026-01-08] Backend: Web3Forms Integration | [log-20260107-web3forms-integration](./GEMINI--logs.md#log-20260107-web3forms-integration)
 - Integrated Web3Forms API for contact form submissions.
 - Removed custom `contact.ts` logging function.

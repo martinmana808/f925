@@ -575,6 +575,21 @@ Replace the custom `contact.ts` Netlify function with Web3Forms API for handling
 - Passed `npm run build`.
 - Verified code logic matches Web3Forms API standards.
 
+<a name="log-20260108-branding-logo"></a>
+## [2026-01-08] Branding: Added F925 Logo
+### User Prompt
+Added SVG logo to the header section of App.tsx.
+
+### Implementation Plan
+# Branding Update
+
+## Changes
+- **App.tsx:** Inserted the F925 SVG logo above the manifesto text.
+- **File Sync:** User manualy refreshed `ContactModal`, `GaryChat`, `VideoTestimonial`, `chat.ts` and `ai.ts` to ensure consistency.
+
+## Verification
+- Logo renders correctly in the left column.
+
 ### Build Consistency
 Passed `npm run build` without any TypeScript or styling errors.
 
