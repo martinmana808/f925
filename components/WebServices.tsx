@@ -45,17 +45,17 @@ export const WebServices: React.FC = () => {
 
   return (
     <Section id="services" className="bg-white">
-      <div className="mb-16">
-        <h2 className="text-4xl md:text-5xl font-heading font-bold tracking-tighter text-neutral-900 mb-6">
+      <div className="mb-24">
+        <h2 className="text-4xl md:text-5xl font-heading font-bold tracking-tighter text-neutral-900 mb-8">
           Get your business <br />
           <span className="text-neutral-400">web ready and pumping</span>
         </h2>
-        <p className="text-lg text-neutral-500 max-w-2xl">
+        <p className="text-lg md:text-xl text-neutral-500 max-w-2xl leading-relaxed">
           We provide a comprehensive range of digital services to help NZ businesses thrive in the online world.
         </p>
       </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
           {services.map((service, index) => (
             <motion.div
               key={index}
@@ -63,7 +63,7 @@ export const WebServices: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="p-8 bg-neutral-50 border border-neutral-100 rounded-3xl hover:border-emerald-500/30 hover:shadow-xl hover:shadow-emerald-500/5 transition-all group"
+              className="p-10 bg-neutral-50 border border-neutral-100 rounded-[2.5rem] hover:border-emerald-500/30 hover:shadow-xl hover:shadow-emerald-500/5 transition-all group duration-300"
             >
               <div className={`p-4 rounded-2xl w-fit mb-6 transition-transform group-hover:scale-110 ${service.color}`}>
                 {service.icon}

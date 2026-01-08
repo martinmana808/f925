@@ -23,28 +23,28 @@ export const WebHero: React.FC = () => {
             <span className="text-xs font-bold uppercase tracking-widest text-neutral-400">Digital Craftsmanship</span>
           </div>
           
-          <h1 className="text-5xl md:text-7xl font-heading font-bold tracking-tighter text-neutral-900 mb-8 leading-[1.05]">
+          <h1 className="text-5xl md:text-7xl font-heading font-bold tracking-tighter text-neutral-900 mb-12 leading-[1.05]">
             Web design that <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-blue-600">
               converts.
             </span>
           </h1>
           
-          <p className="text-lg md:text-xl text-neutral-500 mb-12 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-lg md:text-xl text-neutral-500 mb-20 max-w-2xl mx-auto leading-relaxed">
             We're a web design company and Shopify expert building conversion-focused 
             digital experiences for ambitious businesses.
           </p>
           
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto mb-16">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-5xl mx-auto mb-24">
             {[
               { icon: <Globe size={20} />, label: 'Web Design' },
               { icon: <ShoppingBag size={20} />, label: 'Shopify' },
               { icon: <BarChart3 size={20} />, label: 'SEO' },
               { icon: <ArrowRight size={20} />, label: 'Marketing' },
             ].map((item, i) => (
-              <div key={i} className="flex flex-col items-center gap-3 p-6 bg-white border border-neutral-100 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
-                <div className="text-emerald-600">{item.icon}</div>
-                <span className="text-sm font-semibold text-neutral-900">{item.label}</span>
+              <div key={i} className="flex flex-col items-center gap-4 p-8 bg-white border border-neutral-100 rounded-3xl shadow-sm hover:shadow-xl transition-all duration-300">
+                <div className="text-emerald-600 mb-2">{item.icon}</div>
+                <span className="text-base font-bold text-neutral-900">{item.label}</span>
               </div>
             ))}
           </div>
