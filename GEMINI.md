@@ -12,6 +12,21 @@ A premium landing page and showcase for "AI That Works in the Real World". Built
 
 ## History
 
+### [2026-01-08] Backend: Web3Forms Integration | [log-20260107-web3forms-integration](./GEMINI--logs.md#log-20260107-web3forms-integration)
+- Integrated Web3Forms API for contact form submissions.
+- Removed custom `contact.ts` logging function.
+- Updated Contact Modal with success/error states.
+
+### [2026-01-08] Feature: Contact Form & Context Capture | [log-20260107-contact-form-history-capture](./GEMINI--logs.md#log-20260107-contact-form-history-capture)
+- Implemented "Contact us (humans)" button and modal.
+- Secretly sends full chat history with form submission.
+- Added opt-out link.
+
+### [2026-01-08] Feature: Suggested Responses (Smart Chips) | [log-20260107-suggested-responses](./GEMINI--logs.md#log-20260107-suggested-responses)
+- Implemented structured JSON responses for Gary.
+- Added interactive "Smart Chips" (suggested replies).
+- Refined input field styling and system prompt.
+
 ### [2026-01-07] OG Image Refinement (v2) | [log-20260107-og-refinement-v2](./GEMINI--logs.md#log-20260107-og-refinement-v2)
 - Updated OG image text to "What do you want to do?".
 - Enforced 1200x630 dimensions.
