@@ -412,6 +412,169 @@ the ogimage should be 1200 x 630 pixels. Remember the text: F925 | Ai solutions 
 ## Verification Results
 - `public/og-image.png` updated.
 
+<a name="log-20260107-ai-integration-gary"></a>
+## [2026-01-07] Architecture: AI Integration (Netlify + Groq)
+### User Prompt
+Ok, enough with the design. Now we need to do the llm. I've got a couple apps that use ai like this.
+
+### Implementation Plan
+# AI Integration: The Brain (Groq + Netlify)
+
+Implement real LLM functionality for "Gary" using the "BrainTube" stack (Netlify Functions + Groq).
+
+## Proposed Changes
+### [Backend] Netlify Functions
+- **File:** `netlify/functions/chat.ts`
+- **Role:** Secure proxy that connects to Groq's `llama-3.3-70b-versatile` model.
+- **System Prompt:** Configured "Gary" to be a professional, witty, and confident AI assistant for F925.
+
+### [Frontend] Services
+- **File:** `src/services/ai.ts`
+- **Role:** Abstraction layer handling `fetch` calls to `/.netlify/functions/chat`.
+
+### [Component] GaryChat
+- **Update:** Removed simulated `setTimeout` delays.
+- **Integration:** Now calls `AIService.sendMessage()` to get real responses.
+
+### Walkthrough
+# Walkthrough - AI Integration
+
+## Summary of Changes
+- **Real Intelligence:** Gary has been upgraded from a scripted simulation to a fully functional AI-powered assistant.
+- **Privacy & Security:** Implemented a backend proxy pattern using Netlify Functions to keep the API keys secure on the server side (never exposed to the client).
+- **Latency:** Leveraged standard fetch APIs to connect to the internal serverless function, ensuring minimal overhead.
+
+## Verification Results
+- Passed `npm run build`.
+- Codebase is ready for deployment / local testing with `netlify dev`.
+
+<a name="log-20260107-design-polish-openai-style"></a>
+## [2026-01-07] Design: OpenAI-Style Polish
+### User Prompt
+Make chat bubbles text smaller. Enhance design to be in-line with this screenshot (OpenAI style).
+
+### Implementation Plan
+# Design Polish: Typography & Layout
+
+Refine the UI to match the requested "OpenAI-style" aesthetic and reduce chat text size.
+
+## Proposed Changes
+### [Component] GaryChat
+- **Typography:** Reduced message text size from `text-lg` to `text-[15px]` for a sharper, more technical feel.
+- **Spacing:** Tightened padding for cleaner bubble density.
+
+### [Layout] App.tsx
+- **Hero Alignment:** Refactored the left-column content to be fully center-aligned vertical and horizontal.
+- **Typography Hierarchy:**
+    - Added "Eyebrow" text ("The next era of work is here").
+    - Scaled Main Heading to `text-6xl/7xl`.
+    - Refined Body text color and weight.
+- **Call to Action:** Transformed the simple "Contact" link into a high-contrast Black Pill Button ("Contact sales").
+- **Grid:** Updated testimonial grid to a single row (5 cols) to fit the new centered layout.
+
+### Walkthrough
+# Walkthrough - Design Polish
+
+## Summary of Changes
+- **Aesthetic Overhaul:** The landing page now mirrors the high-end, centralized aesthetic of the OpenAI reference.
+- **Refined Chat UI:** "Gary" now speaks in a more compact, legible font size (`15px`), making long conversations easier to scan.
+- **Clearer CTA:** The new primary button drives focus to the "Contact sales" action.
+
+## Verification Results
+- Passed `npm run build`.
+- Visual hierarchy aligns with the user-provided screenshot.
+
+<a name="log-20260107-suggested-responses"></a>
+## [2026-01-07] Feature: Suggested Responses (Smart Chips)
+### User Prompt
+Make the input field smaller. Add 3 suggested responses that the user might want to say next.
+
+### Implementation Plan
+# Suggested Responses & Input Polish
+
+Implement dynamic, context-aware usage suggestions for the chat and refine the input field aesthetics.
+
+## Proposed Changes
+### [Backend] Netlify Function (`chat.ts`)
+- **JSON Structure:** Enforced strict JSON output (`{ reply: string, suggestions: string[] }`) via system prompt and `response_format: { type: 'json_object' }`.
+- **Logic:** Gary now generates 3 contextual follow-up options for every reply.
+
+### [Frontend] AI Service & GaryChat
+- **Type Safety:** Updated `AIService` to parse the new JSON response.
+- **UI:** Added an animated suggestion bar above the input field.
+- **Input Polish:** Refined input field styles (smaller font `text-[15px]`, rounded corners) as requested.
+
+### Walkthrough
+# Walkthrough - Smart Suggestions
+
+## Summary of Changes
+- **Interactive Chat:** Users can now click dynamic "Smart Chips" to reply instantly without typing.
+- **Visual Polish:** The input area is cleaner, tighter, and more modern.
+- **Robust Backend:** The AI now thinks in structured data (JSON) rather than just unstructured text.
+
+## Verification Results
+- Passed `npm run build`.
+- API successfully returning JSON with suggestions.
+
+<a name="log-20260107-contact-form-history-capture"></a>
+## [2026-01-07] Feature: Contact Form & Context Capture
+### User Prompt
+Add a "Contact us (humans)" button that opens a modal form. Secretly send the conversation history with Gary along with the submission.
+
+### Implementation Plan
+# Contact Form & Chat History Export
+
+Implement a "Contact us (humans)" modal that captures user details and secretly appends the full GaryChat history for context.
+
+## Proposed Changes
+### [Backend] Netlify Function (`contact.ts`)
+- **New Endpoint:** Created `POST` handler to receive name, email, message, and `chatHistory`.
+- **Logging:** Currently logs to Netlify console (ready for SMTP integration).
+
+### [Frontend] ContactModal & Integration
+- **Components:** Created `ContactModal.tsx` with Framer Motion animations and "Sending..." states.
+- **GaryChat Logic:** Exposed `getHistory()` via `forwardRef` so `App.tsx` can retrieve the chat session on demand.
+- **App UI:** Added "Contact us (humans)" button at the bottom of the sidebar. Also fixed the missing "Opt-out" link.
+
+### Walkthrough
+# Walkthrough - Smart Contact
+
+## Summary of Changes
+- **Human Connection:** Users can now reach out directly via a clean modal form.
+- **Zero-Context Handover:** When they submit, the backend receives their *entire* conversation with Gary, allowing the team to see exactly what was discussed without asking the user to repeat themselves.
+- **Opt-out:** Added the humorous "Take me back" link for users who prefer browsing.
+
+## Verification Results
+- Passed `npm run build`.
+- Passed `npm run build`.
+- Form submits successfully, and chat history appears in backend logs.
+
+<a name="log-20260107-web3forms-integration"></a>
+## [2026-01-07] Backend: Web3Forms Integration
+### User Prompt
+Replace custom contact function with Web3Forms API. Add specific success/error messages to the modal.
+
+### Implementation Plan
+# Web3Forms Integration
+
+Replace the custom `contact.ts` Netlify function with Web3Forms API for handling contact submissions.
+
+## Proposed Changes
+### [Frontend] App.tsx
+- **API Call:** Updated `handleContactSubmit` to POST directly to `https://api.web3forms.com/submit`.
+- **Payload:** Authenticates via `access_key` ("f7da2fa0..."). sends `name`, `email`, `message`, and `Conversation with Gary`.
+
+### [Frontend] ContactModal.tsx
+- **Success State:** Updated text to "Thanks. We will be in touch with you shortly."
+- **Error State:** Added handling for failed submissions with the message "Something happened. The form could not be submitted. Please reload the page and resubmit."
+
+### [Backend] Refactor
+- **Deleted:** `netlify/functions/contact.ts`. The backend logic is now fully handled by the Web3Forms service.
+
+## Verification Results
+- Passed `npm run build`.
+- Verified code logic matches Web3Forms API standards.
+
 ### Build Consistency
 Passed `npm run build` without any TypeScript or styling errors.
 

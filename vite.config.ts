@@ -6,8 +6,15 @@ export default defineConfig(({ mode }) => {
     const env = loadEnv(mode, '.', '');
     return {
       server: {
-        port: 3000,
+        port: 3333,
         host: '0.0.0.0',
+        proxy: {
+            '/.netlify/functions': {
+                target: 'http://localhost:8888',
+                changeOrigin: true,
+                secure: false,
+            },
+        },
       },
       plugins: [react()],
       define: {
